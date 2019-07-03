@@ -15,7 +15,7 @@ def post_list(request):
 def post_detail(request, year, month, day, post):
 	post = get_object_or_404(Post, slug=post,status='published',publish__year=year,publish__month=month,publish__day=day)
 	comments = post.comments.filter(active=True)
-	print comments	
+	print(comments)
 	# for comment in comments:
 	# 	for reply in comment.replies.all():
 	# 		print reply.body

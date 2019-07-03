@@ -1,6 +1,41 @@
 {% extends "blog/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
+
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="/">Self Defence</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="index.html">Home</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="about.html">About</a>-->
+<!--          </li>-->
+        </ul>
+      </div>
+    </div>s
+  </nav>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+ <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
 <h1>{{ post.title }}</h1>
 <p class="date">
 Published {{ post.publish }} by {{ post.author }}
@@ -9,10 +44,12 @@ Published {{ post.publish }} by {{ post.author }}
 <br/><br/><br/>
 
 
+
+
 {% for comment in comments %}
 <div class="comment">
 <p class="info">
-Comment {{ forloop.counter }} by {{ comment.name }}
+ {{ forloop.counter }} Answer by <b> {{ comment.name }}</b>
 {{ comment.created }}
 </p>
 {{ comment.body|linebreaks }}
@@ -23,21 +60,28 @@ Comment {{ forloop.counter }} by {{ comment.name }}
 
 
 {% empty %}
-<p>There are no comments yet.</p>
+<p>There are no answers yet.</p>
 {% endfor %}
 
 
 {% if new_comment %}
-<h2>Your comment has been added.</h2>
+<h2>Your answer has been added.</h2>
 {% else %}
 
 <hr>
 <br/><br/><br/><br/>
-<h2>Add a new comment</h2>
+<h2>Add a new answer</h2>
 <form action="." method="post">
 {{ comment_form.as_p }}
 {% csrf_token %}
-<p><input type="submit" value="Add comment"></p>
+<p><input type="submit" value="Submit Answer"></p>
+
+        </div>
+      </div>
+    </div>
+ </article>
+
+
 </form>
 {% endif %}
 {% endblock %}
